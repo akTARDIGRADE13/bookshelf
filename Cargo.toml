@@ -1,0 +1,43 @@
+[package]
+name = "bookshelf"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Webフレームワーク
+axum = { version = "0.8", features = ["macros"] }
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Template engine（SSR）
+askama = "0.12"
+
+# HTTPまわりツール（Cookieや静的ファイル配信などで使う）
+tower = "0.4"
+tower-http = { version = "0.5", features = ["fs"] }
+
+# DB（SQLite + マイグレーション + クエリマクロ）
+sqlx = { version = "0.7", features = [
+    "sqlite",
+    "runtime-tokio-rustls",
+    "macros"
+] }
+
+# シリアライズ/デシリアライズ
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# 認証（パスワードハッシュ）
+argon2 = "0.5"
+
+# UUID（DBのPKやslug生成に将来使うかも）
+uuid = { version = "1", features = ["v4"] }
+
+# 環境変数読み込み（DBパスなどに便利）
+dotenvy = "0.15"
+
+# ログ
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
